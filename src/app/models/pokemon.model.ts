@@ -6,7 +6,7 @@ export default interface Pokemon{
     weight: number,
     sprites: {
         other : {
-            dream_world : {
+            home : {
                 front_default : string
             }
         }

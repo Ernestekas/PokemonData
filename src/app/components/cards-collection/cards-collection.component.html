@@ -1,12 +1,20 @@
+<nav class="navbar navbar-light bg-light">
+    <form class="container-fluid justify-content-start">
+      <button class="btn btn-outline-primary me-2" type="button" (click)="getDefaultPokemons()">Get First 20 Pokemons</button>
+      <button class="btn btn-outline-success me-2" type="button" (click)="getRandomPokemons()">Get 20 random Pokemons</button>
+      <div>Total Pokemons from API: {{pokemonCount}}</div>
+    </form>
+</nav>
+
 <div class="container">
     <div class="row">
         <div class="col d-flex align-items-stretch" *ngFor="let pokemon of pokemons">
             <div class="card m-1" style="width: 18rem;">
-                <img src="{{pokemon.sprites.other.dream_world.front_default}}" style="max-height: 10rem;" class="card-img-top" alt="{{pokemon.name}}">
+                <img src="{{pokemon.sprites.other.home.front_default}}" style="max-height: 10rem;" class="card-img-top" alt="{{pokemon.name}}">
                 <div class="card-body">
                   <p class="card-text">
                       Id: {{pokemon.id}} <br>
-                      Name: {{pokemon.name}} <br>
+                      Name: <span style="text-transform:uppercase">{{pokemon.name}}</span> <br>
                       Wight: {{pokemon.weight}} <br>
                       Type: {{pokemon.types[0].type.name}}
                   </p>

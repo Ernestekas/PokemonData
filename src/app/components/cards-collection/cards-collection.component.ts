@@ -12,6 +12,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class CardsCollectionComponent implements OnInit {
   public pokemons : Pokemon[] = [];
   public pokemonCount : number = 0;
+  private pokemonTrueCount : number = 898;
   private pokemonService? : PokemonService;
 
   constructor(pokemonService? : PokemonService) { 
@@ -23,18 +24,17 @@ export class CardsCollectionComponent implements OnInit {
     this.getDefaultPokemons();
   }
 
-  private getDefaultPokemons() : void {
-    for(let i = 1; i <= 20; i++){
-      if(i == 1){
-        this.pokemonService?.getByName('pikachu').subscribe((pokemon) =>{
-          this.pokemons.push(pokemon);
-        });
-      }
-      else{
+  public getDefaultPokemons() : void {
+    this.pokemons = [];
+
+    this.pokemonService?.getByName('pikachu').subscribe((pokemon) =>{
+      this.pokemons.push(pokemon);
+    });
+
+    for(let i = 1; i < 20; i++){
         this.pokemonService?.getById(i).subscribe((pokemon) => {
           this.pokemons.push(pokemon);
         });
-      }
     }
   }
 
@@ -42,5 +42,19 @@ export class CardsCollectionComponent implements OnInit {
     this.pokemonService?.getCount().subscribe((count) => {
       this.pokemonCount = count.count;
     })
+  }
+
+  public getRandomPokemons() : void {
+    this.pokemons = [];
+    this.pokemonService?.getByName('pikachu').subscribe((pokemon) => {
+      this.pokemons.push(pokemon)
+    });
+
+    for(let i = 0; i < 19; i++){
+      let id = Math.floor((Math.random() * this.pokemonTrueCount) + 1);
+      this.pokemonService?.getById(id).subscribe((pokemon) => {
+        this.pokemons.push(pokemon)
+      });
+    }
   }
 }
