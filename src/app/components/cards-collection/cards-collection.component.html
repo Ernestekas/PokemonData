@@ -9,8 +9,8 @@
 <div class="container">
     <div class="row">
         <div class="col d-flex align-items-stretch" *ngFor="let pokemon of pokemons">
-            <div class="card m-1" style="width: 18rem;">
-                <img src="{{pokemon.sprites.other.home.front_default}}" style="max-height: 10rem;" class="card-img-top" alt="{{pokemon.name}}">
+            <div class="card m-1 p-1" style="width: 18rem; background-color:wheat;">
+                <img src="{{pokemon.sprites.other.home.front_default}}" style="max-height: 10rem; width: auto; background-color:honeydew;" class="card-img-top" alt="{{pokemon.name}}">
                 <div class="card-body">
                   <p class="card-text">
                       Id: {{pokemon.id}} <br>
